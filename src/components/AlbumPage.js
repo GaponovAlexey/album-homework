@@ -34,9 +34,6 @@ const AlbumItemsPage = () => {
   }
 
   const forwardHandler = () => {
-    console.log('init forward', selectedCardIndex.current)
-    selectedCardIndex.current += 1
-    console.log('after forward', selectedCardIndex.current)
 
     if (selectedCardIndex.current < items.length) {
       setItemFound(
@@ -50,9 +47,6 @@ const AlbumItemsPage = () => {
   }
 
   const backwardHandler = () => {
-    console.log('init backward', selectedCardIndex.current)
-    selectedCardIndex.current -= 1
-    console.log('after backward', selectedCardIndex.current)
 
     if (selectedCardIndex.current >= 0) {
       setItemFound(
