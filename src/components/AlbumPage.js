@@ -10,6 +10,7 @@ export const AlbumItemsPage = () => {
   const selectedCardIndex = useRef()
 
   const [items, setItems] = useState([])
+  const [albums, setAlbums] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isShowing, setIsShowing] = useState(false)
 
@@ -20,7 +21,20 @@ export const AlbumItemsPage = () => {
     newItems.splice([id], 1)
     setItems(newItems)
   }
-  console.log(items);
+  console.log(items)
+
+  useEffect(() => {
+    setIsLoading(true)
+    const fetchData = async () => {
+      const result = await fetch(
+        `https://jsonplaceholder.typicode.com/albums`
+      )
+      const resultJson = await result.json()
+      setAlbums(resultJson)
+      setIsLoading(false)
+    }
+    fetchData()
+  }, [])
 
   useEffect(() => {
     setIsLoading(true)
@@ -96,7 +110,8 @@ export const AlbumItemsPage = () => {
           justify-content: center;
         `}
       >
-        <MultipleSelectCheckmarks items={items} />
+        <MultipleSelectCheckmarks items={albums} title={'albums'} />
+        <MultipleSelectCheckmarks items={items} title={'id'} />
       </div>
       <div
         className={css`
