@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { MultiActionAreaCard } from './CardMUi'
+import MultipleSelectCheckmarks from './MultipleSelectCheckmarks'
 
 export const AlbumItemsPage = () => {
   const [itemFound, setItemFound] = useState()
@@ -19,6 +20,7 @@ export const AlbumItemsPage = () => {
     newItems.splice([id], 1)
     setItems(newItems)
   }
+  console.log(items);
 
   useEffect(() => {
     setIsLoading(true)
@@ -36,7 +38,6 @@ export const AlbumItemsPage = () => {
   const onItemHandler = (value, index) => {
     setItemFound(items.find((item) => item.id === value))
     selectedCardIndex.current = index
-    console.log('on', selectedCardIndex.current)
     setIsShowing(true)
   }
 
@@ -70,22 +71,33 @@ export const AlbumItemsPage = () => {
 
   return (
     <div>
-      <div className='controller-button-container'>
+      <span>
         <Link to='/'>
-          <button className='controller-button' value='home'>
-            All Albums
-          </button>
+          <button value='home'>All Albums</button>
         </Link>
-      </div>
+      </span>
       {isLoading && (
         <div>
           <p>...loading</p>
         </div>
       )}
-      <p className='page-title-message'>
+      <span
+        className={css`
+          display: flex;
+          justify-content: center;
+        `}
+      >
         You have chosen <span>Album {albumId}</span>. Total of {items.length}{' '}
         photos to explore. Enjoy!
-      </p>
+      </span>
+      <div
+        className={css`
+          display: flex;
+          justify-content: center;
+        `}
+      >
+        <MultipleSelectCheckmarks items={items} />
+      </div>
       <div
         className={css`
           max-width: 990px;

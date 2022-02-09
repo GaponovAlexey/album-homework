@@ -10,7 +10,6 @@ export const MultiActionAreaCard = ({
   onClick,
   className,
   removeCard,
-  index
 }) => {
   return (
     <Card
@@ -27,7 +26,7 @@ export const MultiActionAreaCard = ({
         />
         <CardContent>
           <Typography gutterBottom variant='text' component='div'>
-            Element №{index + 1} <br/> Album №{item.albumId}
+            {item.id} id <br /> Album №{item.albumId}
           </Typography>
           <Typography variant='body5' color='text.secondary'>
             {item.title}

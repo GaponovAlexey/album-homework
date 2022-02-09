@@ -20,7 +20,6 @@ const MainAlbumPage = () => {
         `https://jsonplaceholder.typicode.com/albums?_page=${page}&_limit=${limit}`
       )
       const resultJson = await result.json()
-      // const sliceResult = resultJson.slice(0, 20)
       setAlbums(resultJson)
       setIsLoading(false)
     }
@@ -57,7 +56,7 @@ const MainAlbumPage = () => {
               <Card className='albums-card'>
                 <img
                   src={'https://via.placeholder.com/168x118.png'}
-                  alt={`data thumbnail`}
+                  alt={`data`}
                 />
                 <h5>Album {album.id}</h5>
                 <h6>Album {album.title}</h6>
