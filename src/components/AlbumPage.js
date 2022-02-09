@@ -13,6 +13,7 @@ const AlbumItemsPage = () => {
   const [isShowing, setIsShowing] = useState(false)
 
   const { albumId } = useParams()
+  console.log(albumId);
 
   useEffect(() => {
     setIsLoading(true)
