@@ -10,7 +10,7 @@ export const AlbumItemsPage = () => {
   const selectedCardIndex = useRef()
 
   const [items, setItems] = useState([])
-  const [albums, setAlbums] = useState([])
+  const [album, setAlbums] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isShowing, setIsShowing] = useState(false)
 
@@ -110,7 +110,7 @@ export const AlbumItemsPage = () => {
           justify-content: center;
         `}
       >
-        <MultipleSelectCheckmarks items={albums} title={'albums'} />
+        <MultipleSelectCheckmarks items={items} title={'album'} />
         <MultipleSelectCheckmarks items={items} title={'id'} />
       </div>
       <div
