@@ -13,7 +13,6 @@ const AlbumItemsPage = () => {
   const [isShowing, setIsShowing] = useState(false)
 
   const { albumId } = useParams()
-  console.log(albumId);
 
   useEffect(() => {
     setIsLoading(true)
@@ -91,8 +90,8 @@ const AlbumItemsPage = () => {
         `}
       >
         {items.map((item, index) => (
-          <Card key={item.id} onClick={() => onItemHandler(item.id, index)}>
-            <img src={'https://via.placeholder.com/100x70.png'} alt={`photo`} />
+          <Card key={item.id} item={item} onClick={() => onItemHandler(item.id, index)}>
+            <img src={item.thumbnailUrl} alt={`photo`} />
             <h5>№{item.id}</h5>
           </Card>
         ))}
