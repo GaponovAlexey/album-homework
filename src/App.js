@@ -6,7 +6,7 @@ import {
   Routes,
   Router,
 } from 'react-router-dom'
-import AlbumItemsPage from './components/AlbumPage'
+import { AlbumItemsPage } from './components/AlbumPage'
 import { Header } from './components/Header'
 import MainAlbumPage from './components/MainAlbumPage'
 

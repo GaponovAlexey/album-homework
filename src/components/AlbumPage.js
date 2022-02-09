@@ -3,8 +3,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import Card from './Card'
+import { MultiActionAreaCard } from './CardMUi'
 
-const AlbumItemsPage = () => {
+export const AlbumItemsPage = () => {
   const [itemFound, setItemFound] = useState()
   const selectedCardIndex = useRef()
 
@@ -13,6 +14,12 @@ const AlbumItemsPage = () => {
   const [isShowing, setIsShowing] = useState(false)
 
   const { albumId } = useParams()
+
+  const removeCard = (id) => {
+    const newItems = [...items]
+    newItems.splice([id], 1)
+    setItems(newItems)
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -86,14 +93,22 @@ const AlbumItemsPage = () => {
           margin: 0 auto;
           margin-top: 30px;
           display: grid;
-          grid-template-columns: repeat(7, 1fr);
+          grid-template-columns: repeat(5, 1fr);
+          column-gap: 20px;
+          grid-row-gap: 20px;
         `}
       >
         {items.map((item, index) => (
-          <Card key={item.id} item={item} onClick={() => onItemHandler(item.id, index)}>
-            <img src={item.thumbnailUrl} alt={`photo`} />
+          <MultiActionAreaCard
+            index={index}
+            removeCard={() => removeCard()}
+            key={item.id}
+            item={item}
+            onClick={() => onItemHandler(item.id, index)}
+          >
+            <img src={item.thumbnailUrl} alt={item.title} />
             <h5>№{item.id}</h5>
-          </Card>
+          </MultiActionAreaCard>
         ))}
       </div>
       {isShowing && (
@@ -139,5 +154,3 @@ const AlbumItemsPage = () => {
     </div>
   )
 }
-
-export default AlbumItemsPage

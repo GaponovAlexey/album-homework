@@ -1,4 +1,5 @@
 import { css } from '@emotion/css'
+import { Pagination, Stack } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -14,6 +15,7 @@ const MainAlbumPage = () => {
       const result = await fetch('https://jsonplaceholder.typicode.com/albums')
       const resultJson = await result.json()
       const sliceResult = resultJson.slice(0, 20)
+      console.log(result)
       setAlbums(sliceResult)
       setIsLoading(false)
     }
@@ -52,6 +54,11 @@ const MainAlbumPage = () => {
             </Card>
           </Link>
         ))}
+      </div>
+      <div>
+        <Stack spacing={2}>
+          <Pagination count={10} disabled />
+        </Stack>
       </div>
     </div>
   )
