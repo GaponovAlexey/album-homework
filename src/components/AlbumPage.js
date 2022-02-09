@@ -1,4 +1,5 @@
 import { css } from '@emotion/css'
+import { Button } from '@mui/material'
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
@@ -16,12 +17,11 @@ export const AlbumItemsPage = () => {
 
   const { albumId } = useParams()
 
-  const removeCard = (id ) => {
+  const removeCard = (e, id) => {
     const newItems = [...items]
-    newItems.splice(id, 1)
+    newItems.splice([id], 1)
     setItems(newItems)
   }
-  console.log(items)
 
   useEffect(() => {
     setIsLoading(true)
@@ -83,11 +83,9 @@ export const AlbumItemsPage = () => {
 
   return (
     <div>
-      <span>
-        <Link to='/'>
-          <button value='home'>All Albums</button>
-        </Link>
-      </span>
+      <Link to='/'>
+        <Button variant='text'>All Albums</Button>
+      </Link>
       {isLoading && (
         <div>
           <p>...loading</p>
