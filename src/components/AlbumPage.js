@@ -2,7 +2,6 @@ import { css } from '@emotion/css'
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import Card from './Card'
 import { MultiActionAreaCard } from './CardMUi'
 
 export const AlbumItemsPage = () => {
