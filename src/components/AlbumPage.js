@@ -1,10 +1,9 @@
 import { css } from '@emotion/css'
 import { Button } from '@mui/material'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
 import { MultiActionAreaCard } from './CardMUi'
-import MultipleSelectCheckmarks from './MultipleSelectCheckmarks'
+import { SelectCategory } from './SelectCategory'
 
 export const AlbumItemsPage = () => {
   const [itemFound, setItemFound] = useState()
@@ -14,13 +13,18 @@ export const AlbumItemsPage = () => {
   const [album, setAlbums] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isShowing, setIsShowing] = useState(false)
-
   const { albumId } = useParams()
 
-  const removeCard = (e, id) => {
-    const newItems = [...items]
-    newItems.splice([id], 1)
-    setItems(newItems)
+  const [selectedSort, setselectedSort] = useState('')
+
+  const sortedPosts = useMemo(() => {
+    return selectedSort
+      ? items.filter((el) => el.id.includes(selectedSort))
+      : items
+  }, [])
+
+  const removeCard = (id) => {
+    setItems(items.filter((p) => p.id !== id))
   }
 
   useEffect(() => {
@@ -81,11 +85,16 @@ export const AlbumItemsPage = () => {
     setIsShowing(false)
   }
 
+  const sortPhotoId = (sort) => {
+    console.log(sort)
+    setselectedSort(sort)
+  }
+
   return (
     <div>
-      <Link to='/'>
-        <Button variant='text'>All Albums</Button>
-      </Link>
+      <Button variant='text'>
+        <Link to='/'>All Albums</Link>
+      </Button>
       {isLoading && (
         <div>
           <p>...loading</p>
@@ -106,8 +115,12 @@ export const AlbumItemsPage = () => {
           justify-content: center;
         `}
       >
-        <MultipleSelectCheckmarks items={album} title={'album'} />
-        <MultipleSelectCheckmarks items={items} title={'id'} />
+        <SelectCategory
+          value={selectedSort}
+          onChange={sortPhotoId}
+          option={sortedPosts ? sortedPosts : items}
+          title={'id'}
+        />
       </div>
       <div
         className={css`
@@ -123,7 +136,7 @@ export const AlbumItemsPage = () => {
         {items.map((item, index) => (
           <MultiActionAreaCard
             index={index}
-            removeCard={() => removeCard()}
+            removeCard={removeCard}
             key={item.id}
             item={item}
             onClick={() => onItemHandler(item.id, index)}

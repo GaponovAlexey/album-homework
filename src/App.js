@@ -13,11 +13,10 @@ import MainAlbumPage from './components/MainAlbumPage'
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename='/'>
         <Header />
         <Routes>
           <Route path='/' element={<MainAlbumPage />} />
-
           <Route exact path='/:albumId/photos' element={<AlbumItemsPage />} />
         </Routes>
       </BrowserRouter>
