@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/album-homework/static/css/main.635a25d0.css",
-    "main.js": "/album-homework/static/js/main.603d6ebd.js",
+    "main.js": "/album-homework/static/js/main.f1df9908.js",
     "static/media/roboto-mono-v13-latin-500.woff": "/album-homework/static/media/roboto-mono-v13-latin-500.2ed4651232a34d737777.woff",
     "static/media/roboto-mono-v13-latin-700.woff": "/album-homework/static/media/roboto-mono-v13-latin-700.eba647ae67ba7dc20f05.woff",
     "static/media/roboto-mono-v13-latin-regular.woff": "/album-homework/static/media/roboto-mono-v13-latin-regular.498042b7fe9cd07b4fd1.woff",
@@ -10,10 +10,10 @@
     "static/media/roboto-mono-v13-latin-700.woff2": "/album-homework/static/media/roboto-mono-v13-latin-700.c5c3959c04004102ea46.woff2",
     "index.html": "/album-homework/index.html",
     "main.635a25d0.css.map": "/album-homework/static/css/main.635a25d0.css.map",
-    "main.603d6ebd.js.map": "/album-homework/static/js/main.603d6ebd.js.map"
+    "main.f1df9908.js.map": "/album-homework/static/js/main.f1df9908.js.map"
   },
   "entrypoints": [
     "static/css/main.635a25d0.css",
-    "static/js/main.603d6ebd.js"
+    "static/js/main.f1df9908.js"
   ]
 }
