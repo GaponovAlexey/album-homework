@@ -1,26 +1,19 @@
 import React from 'react'
-import {
-  BrowserRouter,
-  Route,
-  Redirect,
-  Routes,
-  Router,
-} from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AlbumItemsPage } from './components/AlbumPage'
 import { Header } from './components/Header'
 import MainAlbumPage from './components/MainAlbumPage'
 
 function App() {
   return (
-    <div>
-      <BrowserRouter basename='/'>
-        <Header />
-        <Routes>
-          <Route path='/' element={<MainAlbumPage />} />
-          <Route exact path='/:albumId/photos' element={<AlbumItemsPage />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route index path='/' element={<MainAlbumPage />} />
+        <Route path='/:albumId/photos' element={<AlbumItemsPage />} />
+        <Route path='*' element={<AlbumItemsPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
