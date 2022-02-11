@@ -1,6 +1,6 @@
 {
-  "name": "albumsplaseholder",
-  "homepage": "https://kekelberi.github.io/albumsplaseholder",
+  "name": "album-homework",
+  "homepage": "https://kekelberi.github.io/album-homework",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
