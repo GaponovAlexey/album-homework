@@ -30,6 +30,8 @@ const MainAlbumPage = () => {
     setpage(value)
   }
 
+
+  
   return (
     <StyledEngineProvider injectFirst>
       <div>
@@ -73,7 +75,12 @@ const MainAlbumPage = () => {
           `}
         >
           <Stack>
-            <Pagination defaultValue={1} count={10} page={page} onChange={handleChange} />
+            <Pagination
+              defaultValue={1}
+              count={10}
+              page={page}
+              onChange={handleChange}
+            />
           </Stack>
         </div>
       </div>

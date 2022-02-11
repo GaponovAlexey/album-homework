@@ -6,10 +6,10 @@ import MainAlbumPage from './components/MainAlbumPage'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/albumsplaseholder'>
       <Header />
-      <Routes>
-        <Route index path='/' element={<MainAlbumPage />} />
+      <Routes path='/' element={<MainAlbumPage />}>
+        <Route index element={<MainAlbumPage />} />
         <Route path='/:albumId/photos' element={<AlbumItemsPage />} />
         <Route path='*' element={<AlbumItemsPage />} />
       </Routes>

@@ -6,7 +6,7 @@ export const SelectCategory = ({ option, title, value, onChange }) => {
       <option disabled value=''>
         {title}
       </option>
-      {option.map((el) => (
+      {option.map((el, index) => (
         <option key={el.id} value={el.value}>
           {el.id}
         </option>

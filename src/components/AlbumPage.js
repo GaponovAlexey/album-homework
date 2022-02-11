@@ -1,6 +1,6 @@
 import { css } from '@emotion/css'
 import { Button } from '@mui/material'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MultiActionAreaCard } from './CardMUi'
 import { SelectCategory } from './SelectCategory'
@@ -10,33 +10,16 @@ export const AlbumItemsPage = () => {
   const selectedCardIndex = useRef()
 
   const [items, setItems] = useState([])
-  const [album, setAlbums] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isShowing, setIsShowing] = useState(false)
   const { albumId } = useParams()
 
   const [selectedSort, setselectedSort] = useState('')
-
-  const sortedPosts = useMemo(() => {
-    return selectedSort
-      ? items.filter((el) => el.id.includes(selectedSort))
-      : items
-  }, [])
+  console.log('render')
 
   const removeCard = (id) => {
     setItems(items.filter((p) => p.id !== id))
   }
-
-  useEffect(() => {
-    setIsLoading(true)
-    const fetchData = async () => {
-      const result = await fetch(`https://jsonplaceholder.typicode.com/albums`)
-      const resultJson = await result.json()
-      setAlbums(resultJson)
-      setIsLoading(false)
-    }
-    fetchData()
-  }, [])
 
   useEffect(() => {
     setIsLoading(true)
@@ -59,35 +42,29 @@ export const AlbumItemsPage = () => {
 
   const forwardHandler = () => {
     selectedCardIndex.current += 1
-    if (selectedCardIndex.current < items.length) {
-      setItemFound(
-        items.find((item, index) => index === selectedCardIndex.current)
-      )
-    } else {
-      setIsShowing(false)
-      return
-    }
+    selectedCardIndex.current < items.length
+      ? setItemFound(
+          items.find((item, index) => index === selectedCardIndex.current)
+        )
+      : setIsShowing(false)
   }
 
   const backwardHandler = () => {
     selectedCardIndex.current -= 1
-    if (selectedCardIndex.current >= 0) {
-      setItemFound(
-        items.find((item, index) => index === selectedCardIndex.current)
-      )
-    } else {
-      setIsShowing(false)
-      return
-    }
+    selectedCardIndex.current >= 0
+      ? setItemFound(
+          items.find((item, index) => index === selectedCardIndex.current)
+        )
+      : setIsShowing(false)
   }
 
-  const offItemHandler = () => {
-    setIsShowing(false)
-  }
 
   const sortPhotoId = (sort) => {
     console.log(sort)
     setselectedSort(sort)
+    setItemFound(items.find((item) => item.id == sort))
+    // selectedCardIndex.current = index
+    setIsShowing(true)
   }
 
   return (
@@ -118,7 +95,7 @@ export const AlbumItemsPage = () => {
         <SelectCategory
           value={selectedSort}
           onChange={sortPhotoId}
-          option={sortedPosts ? sortedPosts : items}
+          option={items}
           title={'id'}
         />
       </div>
@@ -173,9 +150,9 @@ export const AlbumItemsPage = () => {
               align-items: center;
             `}
           >
-            <button onClick={offItemHandler}>X</button>
+            <button onClick={() => setIsShowing(false)}>X</button>
             <img
-              src={'https://via.placeholder.com/760x452.png'}
+              src={itemFound.url}
               alt={`data pic`}
             />
             <div>
