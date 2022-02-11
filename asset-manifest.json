@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/albumsplaseholder/static/css/main.36c20c7a.css",
-    "main.js": "/albumsplaseholder/static/js/main.5277fb75.js",
+    "main.css": "/albumsplaseholder/static/css/main.2f4124eb.css",
+    "main.js": "/albumsplaseholder/static/js/main.42f2a96c.js",
     "static/media/roboto-mono-v13-latin-500.woff": "/albumsplaseholder/static/media/roboto-mono-v13-latin-500.2ed4651232a34d737777.woff",
     "static/media/roboto-mono-v13-latin-700.woff": "/albumsplaseholder/static/media/roboto-mono-v13-latin-700.eba647ae67ba7dc20f05.woff",
     "static/media/roboto-mono-v13-latin-regular.woff": "/albumsplaseholder/static/media/roboto-mono-v13-latin-regular.498042b7fe9cd07b4fd1.woff",
@@ -9,11 +9,11 @@
     "static/media/roboto-mono-v13-latin-regular.woff2": "/albumsplaseholder/static/media/roboto-mono-v13-latin-regular.535bc89d4af715503b01.woff2",
     "static/media/roboto-mono-v13-latin-700.woff2": "/albumsplaseholder/static/media/roboto-mono-v13-latin-700.c5c3959c04004102ea46.woff2",
     "index.html": "/albumsplaseholder/index.html",
-    "main.36c20c7a.css.map": "/albumsplaseholder/static/css/main.36c20c7a.css.map",
-    "main.5277fb75.js.map": "/albumsplaseholder/static/js/main.5277fb75.js.map"
+    "main.2f4124eb.css.map": "/albumsplaseholder/static/css/main.2f4124eb.css.map",
+    "main.42f2a96c.js.map": "/albumsplaseholder/static/js/main.42f2a96c.js.map"
   },
   "entrypoints": [
-    "static/css/main.36c20c7a.css",
-    "static/js/main.5277fb75.js"
+    "static/css/main.2f4124eb.css",
+    "static/js/main.42f2a96c.js"
   ]
 }
