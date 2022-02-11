@@ -12,7 +12,7 @@ export const Header = () => {
       <div
         className={css`
           width: 100%;
-          background-color: #efefff;
+          background-color: #977A61;
         `}
       >
         <div

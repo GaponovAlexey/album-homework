@@ -58,7 +58,6 @@ export const AlbumItemsPage = () => {
       : setIsShowing(false)
   }
 
-
   const sortPhotoId = (sort) => {
     console.log(sort)
     setselectedSort(sort)
@@ -140,25 +139,36 @@ export const AlbumItemsPage = () => {
           <button onClick={backwardHandler}>&#60;</button>
           <div
             className={css`
-              width: 840px;
-              height: auto;
-              padding: 10px;
+              width: auto;
+              height: 500px;
               background: rgba(255, 255, 255, 0.6);
               border-radius: 2px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
+              position: relative;
             `}
           >
-            <button onClick={() => setIsShowing(false)}>X</button>
-            <img
-              src={itemFound.url}
-              alt={`data pic`}
-            />
-            <div>
-              <h1>{itemFound.id}</h1>
+            <button
+              className={css`
+                background-color: red;
+                position: absolute;
+                right: -1%;
+                top: -1%;
+              `}
+              onClick={() => setIsShowing(false)}
+            >
+              X
+            </button>
+
+            <div
+              className={css`
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              `}
+            >
+              <h1> id:{itemFound.id}</h1>
               <h3>{itemFound.title}</h3>
             </div>
+            <img src={itemFound.url} alt={itemFound.title} />
           </div>
           <button onClick={forwardHandler}>&#62;</button>
         </div>
